@@ -13,12 +13,12 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class productRepository {
+public class ProductRepository {
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private final String query;
 
-    public productRepository(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+    public ProductRepository(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
         // Читаем содержимое SQL скрипта из файла query_product.sql
         this.query = read("query_product.sql");
@@ -28,7 +28,7 @@ public class productRepository {
         Map<String, Object> params = new HashMap<>();
         params.put("name", name);
         // Предполагается, что запрос вернёт единственное значение product_name
-        return namedParameterJdbcTemplate.queryForObject(query, params, String.class);
+        return namedParameterJdbcTemplate.queryForList(query, params, String.class).toString();
     }
 
     private static String read(String scriptFileName) {

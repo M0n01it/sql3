@@ -1,6 +1,6 @@
 package ru.netology.sql3.controller;
 
-import ru.netology.sql3.repository.productRepository;
+import ru.netology.sql3.repository.ProductRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/products")
-public class productController {
+public class ProductController {
 
-    private final productRepository productRepository;
+    private final ProductRepository productRepository;
 
-    public productController(productRepository productRepository) {
+    public ProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
